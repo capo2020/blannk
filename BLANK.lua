@@ -9640,9 +9640,10 @@ keyboard.inline_keyboard = {
 {{text = '◉ 𝘽𝙊𝙏 𝘽𝙇𝘼𝙉𝙆  .', url = 't.me/Source_blank_bot'}},
 {{text = '◉ 𝙎𝙊𝙐𝙍𝘾𝙀 𝘽𝙇𝘼𝙉𝙆  .', url = 'https://t.me/C_T_V_blank'}}, 
 {{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}}, 
+},
 }
 local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo=https://t.me/C_T_V_blankVX/646&caption=".. URL.escape(T).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo=https://t.me/C_T_V_blank/12&caption=".. URL.escape(T).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 elseif text == 'الاوامر' then
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*♡︙هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
