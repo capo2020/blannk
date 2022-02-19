@@ -11881,7 +11881,7 @@ else
 local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_personal = true,
 data = {
 {
-{text = 'المطور معتز •',type = 'text'}
+{text = 'المطور كابو •',type = 'text'}
 },
 {
 {text = 'الاحصائيات •',type = 'text'},{text = 'السيرفر •',type = 'text'},
@@ -11967,7 +11967,7 @@ data = {
 {text = 'الاحصائيات •',type = 'text'},
 },
 {
-{text = 'المطور معتز •',type = 'text'}
+{text = 'المطور كابو •',type = 'text'}
 },
 {
 {text = 'المساعد •',type = 'text'},{text = 'المطور •',type = 'text'},
@@ -12152,7 +12152,7 @@ local msg_id = msg.id/2097152/0.5
 end
 end
  
-if text == 'المطور معتز •' or text == 'معتز' or text == 'المبرمج' or text == 'زوز' then  
+if text == 'المطور كابو •' or text == 'عبدالرحمن' or text == 'المبرمج' or text == 'كابو' then  
 local UserId_Info = LuaTele.searchPublicChat("C_T_V")
 if UserId_Info.id then
 local  ban = LuaTele.getUser(UserId_Info.id)
@@ -12187,7 +12187,7 @@ end
 end
 end
 
-if text == 'المطور معتز ' or text == 'زوز' or text == 'ميزو' or text == 'معتز' then  
+if text == 'المطور كابو ' or text == 'بودي' or text == 'عبدالرحمن' or text == 'كابو' then  
 local UserId_Info = LuaTele.searchPublicChat("C_T_V")
 if UserId_Info.id then
 local  ban = LuaTele.getUser(UserId_Info.id)
