@@ -32,7 +32,7 @@ end
 else
 print('\27[1;34mلم يتم حفظ التوكن جرب مره اخره \nToken not saved, try again')
 end 
-os.execute('lua MILAN.lua')
+os.execute('lua blank.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User") then
 io.write('\27[1;31mارسل معرف المطور الاساسي الان \nDeveloper UserName saved ↡\n\27[0;39;49m')
@@ -43,7 +43,7 @@ Redis:set(SshId.."Info:Redis:User",UserSudo)
 else
 print('\n\27[1;34mلم يتم حفظ معرف المطور الاساسي \nDeveloper UserName not saved\n')
 end 
-os.execute('lua MILAN.lua')
+os.execute('lua blank .lua')
 end
 if not Redis:get(SshId.."Info:Redis:User:ID") then
 io.write('\27[1;31mارسل ايدي المطور الاساسي الان \nDeveloper ID saved ↡\n\27[0;39;49m')
@@ -54,7 +54,7 @@ Redis:set(SshId.."Info:Redis:User:ID",UserId)
 else
 print('\n\27[1;34mلم يتم حفظ ايدي المطور الاساسي \nDeveloper ID not saved\n')
 end 
-os.execute('lua MILAN.lua')
+os.execute('lua blank.lua')
 end
 local Informationlua = io.open("Information.lua", 'w')
 Informationlua:write([[
@@ -66,14 +66,14 @@ SudoId = ]]..Redis:get(SshId.."Info:Redis:User:ID")..[[
 }
 ]])
 Informationlua:close()
-local MILAN = io.open("MILAN", 'w')
-MILAN:write([[
+local MILAN = io.open("blank", 'w')
+blank:write([[
 cd $(cd $(dirname $0); pwd)
 while(true) do
-sudo lua5.3 MILAN.lua
+sudo lua5.3 blank.lua
 done
 ]])
-MILAN:close()
+blank:close()
 local Run = io.open("Run", 'w')
 Run:write([[
 cd $(cd $(dirname $0); pwd)
@@ -90,15 +90,15 @@ screen -S ]]..Redis:get(SshId.."Info:Redis:User")..[[ -X kill
 ]])
 Run:close()
 Redis:del(SshId.."Info:Redis:User:ID");Redis:del(SshId.."Info:Redis:User");Redis:del(SshId.."Info:Redis:Token:User");Redis:del(SshId.."Info:Redis:Token")
-os.execute('chmod +x MILAN;chmod +x Run;./Run')
+os.execute('chmod +x blank;chmod +x Run;./Run')
 end
 Information = dofile('./Information.lua')
 Sudo_Id = Information.SudoId
 UserSudo = Information.UserSudo
 Token = Information.Token
 UserBot = Information.UserBot
-MILAN = Token:match("(%d+)")
-os.execute('sudo rm -fr .CallBack-Bot/'..MILAN)
+blank = Token:match("(%d+)")
+os.execute('sudo rm -fr .CallBack-Bot/'..blank)
 LuaTele = luatele.set_config{api_id=4139599,api_hash='c4e7d051da03aa0f774b686ea3b993b2',session_name=MILAN,token=Token}
 function var(value)  
 print(serpent.block(value, {comment=false}))   
@@ -170,42 +170,42 @@ return ControllerAll
 end
 function Controller(ChatId,UserId)
 Status = 0
-DevelopersQ = Redis:sismember(MILAN.."DevelopersQ:Groups",UserId) 
-HELPBEVQ = Redis:sismember(MILAN.."HELPBEVQ:Groups",UserId) 
-Developers = Redis:sismember(MILAN.."Developers:Groups",UserId) 
-TheBasics = Redis:sismember(MILAN.."TheBasics:Group"..ChatId,UserId) 
-TheBasicsQ = Redis:sismember(MILAN.."TheBasicsQ:Group"..ChatId,UserId) 
-Originators = Redis:sismember(MILAN.."Originators:Group"..ChatId,UserId)
-Managers = Redis:sismember(MILAN.."Managers:Group"..ChatId,UserId)
-Addictive = Redis:sismember(MILAN.."Addictive:Group"..ChatId,UserId)
-Distinguished = Redis:sismember(MILAN.."Distinguished:Group"..ChatId,UserId)
+DevelopersQ = Redis:sismember(blank.."DevelopersQ:Groups",UserId) 
+HELPBEVQ = Redis:sismember(blank.."HELPBEVQ:Groups",UserId) 
+Developers = Redis:sismember(blank.."Developers:Groups",UserId) 
+TheBasics = Redis:sismember(blank.."TheBasics:Group"..ChatId,UserId) 
+TheBasicsQ = Redis:sismember(blank.."TheBasicsQ:Group"..ChatId,UserId) 
+Originators = Redis:sismember(blank.."Originators:Group"..ChatId,UserId)
+Managers = Redis:sismember(blank.."Managers:Group"..ChatId,UserId)
+Addictive = Redis:sismember(blank.."Addictive:Group"..ChatId,UserId)
+Distinguished = Redis:sismember(blank.."Distinguished:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele 
 if tonumber(UserId) == 1498753532 then
 Status = 'مطور السورس'
 elseif UserId == Sudo_Id then  
 Status = 'المطور الاساسي'
-elseif UserId == MILAN then
+elseif UserId == blank then
 Status = 'البوت'
 elseif DevelopersQ then
 Status = 'المطور الثانوي'
 elseif HELPBEVQ then
 Status = 'المساعد'
 elseif Developers then
-Status = Redis:get(MILAN.."Developer:Bot:Reply"..ChatId) or 'المطور'
+Status = Redis:get(blank.."Developer:Bot:Reply"..ChatId) or 'المطور'
 elseif TheBasicsQ then
-Status = Redis:get(MILAN.."PresidentQ:Group:Reply"..ChatId) or 'المالك'
+Status = Redis:get(blank.."PresidentQ:Group:Reply"..ChatId) or 'المالك'
 elseif TheBasics then
-Status = Redis:get(MILAN.."President:Group:Reply"..ChatId) or 'المنشئ الاساسي'
+Status = Redis:get(blank.."President:Group:Reply"..ChatId) or 'المنشئ الاساسي'
 elseif Originators then
-Status = Redis:get(MILAN.."Constructor:Group:Reply"..ChatId) or 'المنشئ'
+Status = Redis:get(blank.."Constructor:Group:Reply"..ChatId) or 'المنشئ'
 elseif Managers then
-Status = Redis:get(MILAN.."Manager:Group:Reply"..ChatId) or 'المدير'
+Status = Redis:get(blank.."Manager:Group:Reply"..ChatId) or 'المدير'
 elseif Addictive then
-Status = Redis:get(MILAN.."Admin:Group:Reply"..ChatId) or 'الادمن'
+Status = Redis:get(blank.."Admin:Group:Reply"..ChatId) or 'الادمن'
 elseif Distinguished then
-Status = Redis:get(MILAN.."Vip:Group:Reply"..ChatId) or 'المميز'
+Status = Redis:get(blank.."Vip:Group:Reply"..ChatId) or 'المميز'
 else
-Status = Redis:get(MILAN.."Mempar:Group:Reply"..ChatId) or 'العضو'
+Status = Redis:get(blank.."Mempar:Group:Reply"..ChatId) or 'العضو'
 end  
 return Status
 end 
