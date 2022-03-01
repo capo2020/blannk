@@ -1,6 +1,6 @@
--- replace "MILAN" with "BLANK"
-   local s = "MILAN"
-   x = s:gsub( "MILAN", "BLANK")
+-- replace " MILAN " with " BLANK "
+   local s = " MILAN "
+   x = s:gsub( " MILAN ", " BLANK ")
    --> x=" BLANK "
 URL     = require("./libs/url")
 JSON    = require("./libs/dkjson")
